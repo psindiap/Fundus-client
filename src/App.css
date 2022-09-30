@@ -1,0 +1,20 @@
+.collapsible .content {
+    padding: 6px;
+    background-color: #eeeeee;
+}
+.collapsible .header {
+    background-color: #eeeeee65;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.ch{
+    padding-left: 30%;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    overflow-wrap: break-word;
+    overflow-x: scroll;
+}
