@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './Auth.css';
 import signInImage from './signup.jpg'
-import Go from './google-icon-isolated_68185-565.jpg';
+import Go from './G_icon.png';
 
 const Auth = () => {
     
