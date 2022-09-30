@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     if(firstLoaded){
       
-      fetch(`http://localhost:8080/db/getImage/${imgSelected}`, {
+      fetch(`https://fundus-image.herokuapp.com/db/getImage/${imgSelected}`, {
         method: 'GET',
         headers: {
           'token': `Bearer ${user.jwt}`,
@@ -67,7 +67,7 @@ function App() {
 
     if(loggedIn){
       
-      fetch(`http://localhost:8080/db/getImage/${imgSelected}`, {
+      fetch(`https://fundus-image.herokuapp.com/db/getImage/${imgSelected}`, {
         method: 'GET',
         headers: {
           'token': `Bearer ${user.jwt}`,

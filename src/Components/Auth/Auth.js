@@ -13,7 +13,7 @@ const Auth = () => {
             <img src={Go}/>
 
             <div className="auth__form-container_fields-content_button items-center">
-              <a href="http://localhost:8080/auth/google/"><button className="center">
+              <a href="https://fundus-image.herokuapp.com/auth/google/"><button className="center">
              Sign-in using Google</button></a>
             </div>
             
