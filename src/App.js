@@ -65,8 +65,10 @@ function App() {
       setUser({id, jwt});
     }
 
+    console.log("USEFFECT");
+    console.log(loggedIn);
+
     if(loggedIn){
-      
       fetch(`https://fundus-image.herokuapp.com/db/getImage/${imgSelected}`, {
         method: 'GET',
         headers: {
