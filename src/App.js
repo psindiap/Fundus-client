@@ -12,7 +12,7 @@ import img from './Optos/1611516_OD_1.jpg';
 import { useState } from 'react';
 import Nav from './Components/Nav/Nav';
 
-let tot=7;
+let tot=3;
 function App() {
 
   const [mapExpanded, setMapExpanded]=useState({
@@ -30,7 +30,7 @@ function App() {
 // let la=0;
   const [loggedIn, setLoggedIn] = useState(false);
   // const [la, setLa] = useState(1);
-  let la=1;
+  let la=0;
   const [user, setUser] = useState(null);
   const [firstLoaded,setFirstLoaded]=useState(false);
 
