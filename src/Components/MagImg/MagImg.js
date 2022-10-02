@@ -191,7 +191,7 @@ function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelec
 
 </div>
 <div  className="flex space-x-2 justify-center">
-<a href="https://fantastic-madeleine-065d19.netlify.app/"><button 
+<a href="fundus-image.netlify.app/"><button 
     type="button"
     data-mdb-ripple="true"
     data-mdb-ripple-color="light"
