@@ -31,7 +31,7 @@ function sendData(user, loggedIn, selected, setSelected, imgSelected ,setImgSele
 
   var config = {
     method: 'post',
-    url: `http://localhost:8080/db/update/${imgSelected}`,
+    url: `https://fundus-image.herokuapp.com/db/update/${imgSelected}`,
     headers: { 
       'token': `Bearer ${user.jwt}`, 
       'Content-Type': 'application/json'
@@ -189,7 +189,7 @@ function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelec
 
 </div>
 <div  className="flex space-x-2 justify-center">
-<a href="http://localhost:3000/"><button 
+<a href="https://fantastic-madeleine-065d19.netlify.app/"><button 
     type="button"
     data-mdb-ripple="true"
     data-mdb-ripple-color="light"
