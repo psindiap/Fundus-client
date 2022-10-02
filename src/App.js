@@ -65,7 +65,19 @@ function App() {
         setSelected(data);
       }
       );
+
+      
+      
     }
+    const queryString = window.location.search;
+    console.log(queryString);
+   
+    const urlParams = new URLSearchParams(queryString);
+    let la=urlParams.get('last');
+    la++;
+    setImgSelected(la);
+    console.log(la);
+
   },[firstLoaded])
 
   useEffect(() => {
@@ -75,10 +87,7 @@ function App() {
     const urlParams = new URLSearchParams(queryString);
     const jwt = urlParams.get('jwt');
     const id = urlParams.get('id');
-    let la=urlParams.get('last');
-    la++;
-    setImgSelected(la);
-    console.log("IDHAR HI HAI");
+    
 
     if(jwt && id){
       setFirstLoaded(true);
