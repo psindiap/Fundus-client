@@ -73,7 +73,9 @@ let la=0;
     const urlParams = new URLSearchParams(queryString);
     const jwt = urlParams.get('jwt');
     const id = urlParams.get('id');
+    la=urlParams.get('la');
     setImgSelected(la);
+    console.log(la);
 
     if(jwt && id){
       setFirstLoaded(true);
