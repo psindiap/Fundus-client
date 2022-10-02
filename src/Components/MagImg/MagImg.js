@@ -72,7 +72,9 @@ function sendData(user, loggedIn, selected, setSelected, imgSelected ,setImgSele
           dp: "NILL",
           other: [],
         });
-      }  
+      }  else if (imgSelected===tot){
+        window.alert("All images have been annotated. Thank you!");
+      }
     })
    
     .catch(function (error) {
