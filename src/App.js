@@ -75,7 +75,8 @@ function App() {
     const urlParams = new URLSearchParams(queryString);
     const jwt = urlParams.get('jwt');
     const id = urlParams.get('id');
-    la=urlParams.get('last')+1;
+    la=urlParams.get('last');
+    la=la+1;
     setImgSelected(la);
     console.log(la);
 
