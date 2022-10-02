@@ -27,8 +27,10 @@ function App() {
   const [DPexpanded, setDPexpanded]=useState(false);
   const [macExpanded, setMacExpanded]=useState(false);
 
-let la=0;
+// let la=0;
   const [loggedIn, setLoggedIn] = useState(false);
+  // const [la, setLa] = useState(1);
+  let la=1;
   const [user, setUser] = useState(null);
   const [firstLoaded,setFirstLoaded]=useState(false);
 
@@ -73,7 +75,7 @@ let la=0;
     const urlParams = new URLSearchParams(queryString);
     const jwt = urlParams.get('jwt');
     const id = urlParams.get('id');
-    la=urlParams.get('la');
+    la=urlParams.get('last');
     setImgSelected(la);
     console.log(la);
 
