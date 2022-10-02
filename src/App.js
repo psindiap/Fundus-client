@@ -77,7 +77,7 @@ function App() {
     la++;
     if(la>tot){
       la=tot;
-      window.alert("All images have been annotated. Thank you!");
+      window.alert("All images have already been annotated. Thank you for your time!");
     }
     setImgSelected(la);
     console.log(la);
