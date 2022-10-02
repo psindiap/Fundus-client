@@ -75,10 +75,10 @@ function App() {
     const urlParams = new URLSearchParams(queryString);
     const jwt = urlParams.get('jwt');
     const id = urlParams.get('id');
-    la=urlParams.get('last');
+    let la=urlParams.get('last');
     la++;
     setImgSelected(la);
-    console.log(la);
+    console.log("IDHAR HI HAI");
 
     if(jwt && id){
       setFirstLoaded(true);
