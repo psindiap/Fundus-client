@@ -12,7 +12,7 @@ import img from './Optos/1611516_OD_1.jpg';
 import { useState } from 'react';
 import Nav from './Components/Nav/Nav';
 
-
+let tot=7;
 function App() {
 
   const [mapExpanded, setMapExpanded]=useState({
@@ -75,6 +75,10 @@ function App() {
     const urlParams = new URLSearchParams(queryString);
     let la=urlParams.get('last');
     la++;
+    if(la>tot){
+      la=tot;
+      window.alert("All images have been annotated. Thank you!");
+    }
     setImgSelected(la);
     console.log(la);
 
