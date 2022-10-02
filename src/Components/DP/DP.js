@@ -2,12 +2,29 @@
 import React from 'react';
 import useCollapse from 'react-collapsed';
 import {useState} from 'react';
-function DP({selected, setSelected}) {
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+function DP({selected, setSelected,  mapExpanded ,setMapExpanded}) {
+
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
+        isExpanded: mapExpanded.dp,
+    });
 return (
     <div className="collapsible">
-        <div className="header" {...getToggleProps()}>
-            {isExpanded ? 'Disc positional & Morphological changes (Collapse)' : 'Disc positional & Morphological changes (Expand)'}
+        <div className="header" {...getToggleProps({
+            onClick: () => {
+                let currdp=!mapExpanded.dp;
+                setMapExpanded({
+                    meta_pm:false,
+                    ps: false,
+                    mac: false,
+                    peri: false,
+                    dp: currdp,
+                    other: false,
+                  });
+                
+                console.log(mapExpanded);
+            }
+        })}>
+            {mapExpanded.dp ? 'Disc positional & Morphological changes (Collapse)' : 'Disc positional & Morphological changes (Expand)'}
         </div>
         <div {...getCollapseProps()}>
             <div className="content text-2xl text-red">

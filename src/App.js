@@ -15,6 +15,19 @@ import Nav from './Components/Nav/Nav';
 
 function App() {
 
+  const [mapExpanded, setMapExpanded]=useState({
+    meta_pm:false,
+    ps: false,
+    mac: false,
+    peri: false,
+    dp: false,
+    other: false,
+  });
+
+  const [DPexpanded, setDPexpanded]=useState(false);
+  const [macExpanded, setMacExpanded]=useState(false);
+
+let la=0;
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [firstLoaded,setFirstLoaded]=useState(false);
@@ -45,12 +58,14 @@ function App() {
       })
       .then(res => res.json())
       .then(data => {
+
         console.log(data);
         setSelected(data);
       }
       );
     }
   },[firstLoaded])
+
   useEffect(() => {
     const queryString = window.location.search;
     console.log(queryString);
@@ -58,6 +73,7 @@ function App() {
     const urlParams = new URLSearchParams(queryString);
     const jwt = urlParams.get('jwt');
     const id = urlParams.get('id');
+    setImgSelected(la);
 
     if(jwt && id){
       setFirstLoaded(true);
@@ -65,8 +81,10 @@ function App() {
       setUser({id, jwt});
     }
 
-    console.log("USEFFECT");
+    console.log("USE_EFFECT");
     console.log(loggedIn);
+    console.log(imgSelected);
+    
 
     if(loggedIn){
       fetch(`https://fundus-image.herokuapp.com/db/getImage/${imgSelected}`, {
@@ -84,7 +102,7 @@ function App() {
       );
     }
     
-  }, [imgSelected])
+  }, [imgSelected, loggedIn]);
 
     return (
       
@@ -95,17 +113,17 @@ function App() {
         </div>}
 {loggedIn && 
         <div className='flex'>
-          <div className='flex flex-col w-2/5'>
-            <META_PM selected={selected} setSelected={setSelected}/>
-            <PS selected={selected} setSelected={setSelected}/>
-            <Mac selected={selected} setSelected={setSelected}/>
-            <Peri selected={selected} setSelected={setSelected}/>
-            <DP selected={selected} setSelected={setSelected}/>
-            <Other selected={selected} setSelected={setSelected}/>
+          <div className='flex flex-col' style={{width:"29%"}}>
+            <META_PM selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
+            <PS selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
+            <Mac selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
+            <Peri selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
+            <DP selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
+            <Other selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
           </div>
 
-          <div className='flex flex-col w-3/5'>
-            <MagImg user={user} loggedIn={loggedIn} selected={selected} imgSelected={imgSelected}/>
+          <div className='flex flex-col' style={{width:"77%"}}>
+            <MagImg la={la} user={user} loggedIn={loggedIn} selected={selected} setSelected={setSelected} imgSelected={imgSelected} setImgSelected={setImgSelected}/>
 
           </div>
          

@@ -2,7 +2,8 @@
 import React from 'react';
 import useCollapse from 'react-collapsed';
 function Lesions({selected, setSelected}) {
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse(
+    );
 return (
     <div className="collapsible">
         <div className="header text-sm" {...getToggleProps()}>

@@ -1,12 +1,28 @@
 
 import React from 'react';
 import useCollapse from 'react-collapsed';
-function PS({selected, setSelected}) {
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+function PS({selected, setSelected,  mapExpanded ,setMapExpanded}) {
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
+        isExpanded: mapExpanded.ps,
+    });
 return (
     <div className="collapsible">
-        <div className="header" {...getToggleProps()}>
-            {isExpanded ? 'Posterior Staphyloma (Collapse)' : 'Posterior Staphyloma (Expand)'}
+       <div className="header" {...getToggleProps({
+             onClick: () => {
+                let currdp=!mapExpanded.ps;
+                setMapExpanded({
+                    meta_pm:false,
+                    ps: currdp,
+                    mac: false,
+                    peri: false,
+                    dp: false,
+                    other: false,
+                  });
+                
+                console.log(mapExpanded);
+            }
+        })}>
+            {mapExpanded.ps ? 'Posterior Staphyloma (Collapse)' : 'Posterior Staphyloma (Expand)'}
         </div>
         <div {...getCollapseProps()}>
             <div className="content text-2xl text-red">

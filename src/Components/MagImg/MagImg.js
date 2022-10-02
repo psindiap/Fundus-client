@@ -1,7 +1,5 @@
 import React from "react";
 import "./MagImg.css";
-import IMG1 from '../../Optos/1611516_OD_1.jpg';
-import IMG2 from '../../Optos/1611516_OS_1.jpg';
 import axios from 'axios';
 import ReactImageZoom from 'react-image-zoom';
 
@@ -19,10 +17,10 @@ function importAll(r) {
 const images = importAll(require.context('../../Optos', false, /\.(png|jpe?g|svg)$/));
 const values = Object.values(images)
 values.sort();
+const tot=98;
 
 
-function sendData(user, loggedIn, selected, imgSelected) {
-  // console.log(values);
+function sendData(user, loggedIn, selected, setSelected, imgSelected ,setImgSelected) {
 
   selected.other.sort();
   selected.meta_pm.lesions.sort();
@@ -33,7 +31,7 @@ function sendData(user, loggedIn, selected, imgSelected) {
 
   var config = {
     method: 'post',
-    url: `https://fundus-image.herokuapp.com/db/update/${imgSelected}`,
+    url: `http://localhost:8080/db/update/${imgSelected}`,
     headers: { 
       'token': `Bearer ${user.jwt}`, 
       'Content-Type': 'application/json'
@@ -60,10 +58,28 @@ function sendData(user, loggedIn, selected, imgSelected) {
     .then(function (response) {
       console.log(JSON.stringify(response.data));
       window.alert("Data sent successfully!");
+      if(imgSelected<tot){
+        setImgSelected(imgSelected+1);
+        console.log(imgSelected);
+        setSelected({
+          meta_pm:{
+            category:"NILL",
+            lesions: []
+          },
+          ps: "NILL",
+          mac: "NILL",
+          peri: "NILL",
+          dp: "NILL",
+          other: [],
+        });
+      }  
     })
+   
     .catch(function (error) {
       console.log(error);
     });
+
+    
   }
 
 
@@ -81,7 +97,7 @@ function delData(user, loggedIn, selected, imgSelected) {
 
 }
 
-function MagImg({user, loggedIn, selected, imgSelected}) {
+function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelected}) {
 
   function magnify(imgID, zoom) {
 
@@ -163,13 +179,17 @@ function MagImg({user, loggedIn, selected, imgSelected}) {
     type="button"
     data-mdb-ripple="true"
     data-mdb-ripple-color="light"
-    onClick={() => sendData(user, loggedIn, selected, imgSelected)}
+    onClick={(e) => {
+      e.preventDefault();
+     
+      sendData(user, loggedIn, selected, setSelected, imgSelected, setImgSelected) 
+    }}
     class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Submit</button>
 
 
 </div>
 <div  className="flex space-x-2 justify-center">
-<a href="https://fantastic-madeleine-065d19.netlify.app/"><button 
+<a href="http://localhost:3000/"><button 
     type="button"
     data-mdb-ripple="true"
     data-mdb-ripple-color="light"

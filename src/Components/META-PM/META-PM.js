@@ -4,12 +4,28 @@ import useCollapse from 'react-collapsed';
 import Lesions from '../Lesions/Lesions';
 import { useState } from 'react';
 
-function META_PM({selected, setSelected}) {
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+function META_PM({selected, setSelected,  mapExpanded ,setMapExpanded}) {
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
+        isExpanded: mapExpanded.meta_pm,
+    });
 return (
     <div className="collapsible">
-        <div className="header" {...getToggleProps()}>
-            {isExpanded ? 'META-PM (Collapse)' : 'META-PM (Expand)'}
+      <div className="header" {...getToggleProps({
+             onClick: () => {
+                let currdp=!mapExpanded.meta_pm;
+                setMapExpanded({
+                    meta_pm:currdp,
+                    ps: false,
+                    mac: false,
+                    peri: false,
+                    dp: false,
+                    other: false,
+                  });
+                
+                console.log(mapExpanded);
+            }
+        })}>
+            {mapExpanded.meta_pm ? 'META-PM (Collapse)' : 'META-PM (Expand)'}
         </div>
         <div {...getCollapseProps()}>
             <div className="content text-2xl text-red">

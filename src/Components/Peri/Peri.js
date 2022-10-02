@@ -1,12 +1,28 @@
 
 import React from 'react';
 import useCollapse from 'react-collapsed';
-function Peri({selected, setSelected}) {
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+function Peri({selected, setSelected,  mapExpanded ,setMapExpanded}) {
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
+        isExpanded: mapExpanded.peri,
+    });
 return (
     <div className="collapsible">
-        <div className="header" {...getToggleProps()}>
-            {isExpanded ? 'Peripappilary Tesselation (Collapse)' : 'Peripappilary Tesselation (Expand)'}
+        <div className="header" {...getToggleProps({
+             onClick: () => {
+                let currdp=!mapExpanded.peri;
+                setMapExpanded({
+                    meta_pm:false,
+                    ps: false,
+                    mac: false,
+                    peri: currdp,
+                    dp: false,
+                    other: false,
+                  });
+                
+                console.log(mapExpanded);
+            }
+        })}>
+            {mapExpanded.peri ? 'Peripappilary Tesselation (Collapse)' : 'Peripappilary Tesselation (Expand)'}
         </div>
         <div {...getCollapseProps()}>
             <div className="content text-2xl text-red">

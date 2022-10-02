@@ -19,10 +19,11 @@ return (
     
   </ul>
   <form class="d-flex">
-    <button onClick={(e) => {
+    {/* <button onClick={(e) => {
         e.preventDefault();
       if(imgSelected>1){
         setImgSelected(imgSelected-1);
+        console.log(imgSelected);
         setSelected({
           meta_pm:{
             category:"NILL",
@@ -35,11 +36,12 @@ return (
           other: [],
         });
         }
-      }}  class="btn btn-outline-success mx-2" type="submit">Prev</button>
-    <button onClick={(e) => {
+      }}  class="btn btn-outline-success mx-2" type="submit">Prev</button> */}
+    {/* <button onClick={(e) => {
       e.preventDefault();
       if(imgSelected<tot){
         setImgSelected(imgSelected+1);
+        console.log(imgSelected);
         setSelected({
           meta_pm:{
             category:"NILL",
@@ -52,7 +54,7 @@ return (
           other: [],
         });
       }
-      }} class="btn btn-outline-success mx-2" type="submit">Next</button>
+      }} class="btn btn-outline-success mx-2" type="submit">Next</button> */}
       
   </form>
 </div>}
