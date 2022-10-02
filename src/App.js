@@ -76,7 +76,7 @@ function App() {
     const jwt = urlParams.get('jwt');
     const id = urlParams.get('id');
     la=urlParams.get('last');
-    la=la+1;
+    la++;
     setImgSelected(la);
     console.log(la);
 
