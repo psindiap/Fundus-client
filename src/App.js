@@ -6,6 +6,7 @@ import Mac from './Components/Mac/Mac';
 import DP from './Components/DP/DP';
 import Other from './Components/Other/Other';
 import Peri from './Components/Peri/Peri';
+import PeriM from './Components/Peri copy/Peri';
 import Auth from './Components/Auth/Auth';
 import MagImg from './Components/MagImg/MagImg';
 import img from './Optos/1611516_OD_1.jpg';
@@ -20,6 +21,7 @@ function App() {
     ps: false,
     mac: false,
     peri: false,
+    perim: false,
     dp: false,
     other: false,
   });
@@ -41,10 +43,17 @@ function App() {
     },
     ps: "NILL",
     mac: "NILL",
-    peri: "NILL",
+    perim: {
+      nasal: "Nasal",
+      temporal: "Temporal",
+      superior: "Superior",
+      inferior: "Inferior",
+    },
     dp: "NILL",
     other: [],
   });
+
+  
 
   const [imgSelected, setImgSelected] = useState(1);
 
@@ -125,22 +134,27 @@ function App() {
     return (
       
       <React.Fragment>
-        {!loggedIn && < Auth loggedIn={loggedIn}/>}
-        {loggedIn && <div>
+        {/* {!loggedIn && < Auth loggedIn={loggedIn}/>} */}
+        {
+        // loggedIn && 
+        <div>
         <Nav loggedIn={loggedIn} imgSelected={imgSelected} setImgSelected={setImgSelected} setSelected={setSelected}/>
         </div>}
-{loggedIn && 
+{
+// loggedIn && 
+
         <div className='flex'>
-          <div className='flex flex-col' style={{width:"29%"}}>
+          <div className='flex flex-col' style={{width:"39%"}}>
+          
             <META_PM selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
             <PS selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
             <Mac selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
-            <Peri selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
+            <PeriM selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
             <DP selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
             <Other selected={selected} setSelected={setSelected} mapExpanded={mapExpanded} setMapExpanded={setMapExpanded} />
           </div>
 
-          <div className='flex flex-col' style={{width:"77%"}}>
+          <div className='flex flex-col' style={{width:"61%"}}>
             <MagImg la={la} user={user} loggedIn={loggedIn} selected={selected} setSelected={setSelected} imgSelected={imgSelected} setImgSelected={setImgSelected}/>
 
           </div>

@@ -15,6 +15,7 @@ return (
                     ps: false,
                     mac: false,
                     peri: currdp,
+                    perim: false,
                     dp: false,
                     other: false,
                   });

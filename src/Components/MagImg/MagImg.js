@@ -1,7 +1,6 @@
 import React from "react";
 import "./MagImg.css";
 import axios from 'axios';
-import ReactImageZoom from 'react-image-zoom';
 
 
 /*
@@ -43,7 +42,7 @@ function sendData(user, loggedIn, selected, setSelected, imgSelected ,setImgSele
   console.log(JSON.stringify(selected));
   
 
-  if(selected.ps==="NILL" || selected.mac==="NILL" || selected.peri==="NILL" || selected.dp==="NILL" || selected.meta_pm.category==="NILL"|| selected.other.length===0 || selected.meta_pm.lesions.length===0){
+  if(selected.ps==="NILL" || selected.mac==="NILL"  || selected.dp==="NILL" || selected.meta_pm.category==="NILL"|| selected.other.length===0 || selected.meta_pm.lesions.length===0|| selected.perim.nasal==="Nasal" || selected.perim.temporal==="Temporal" || selected.perim.superior==="Superior" || selected.perim.inferior==="Inferior"){
     
     window.alert("Please fill all the fields");
   }else if(selected.meta_pm.lesions.includes('None') && selected.meta_pm.lesions.length>1){

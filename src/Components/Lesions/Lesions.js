@@ -1,13 +1,21 @@
 
 import React from 'react';
 import useCollapse from 'react-collapsed';
+import { useState } from 'react';
 function Lesions({selected, setSelected}) {
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse(
+    const [x, setX]=useState(true);
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
+        isExpanded: x,
+    }
     );
 return (
     <div className="collapsible">
-        <div className="header text-sm" {...getToggleProps()}>
-            {isExpanded ? 'Plus Lesions (Collapse)' : 'Plus Lesions (Expand)'}
+        <div className="header text-sm" {...getToggleProps({
+             onClick: () => {
+               setX(!x);
+            }
+        })}>
+            {x ? 'Plus Lesions (Collapse)' : 'Plus Lesions (Expand)'}
         </div>
         <div {...getCollapseProps()}>
             <div className="content text-2xl text-red">

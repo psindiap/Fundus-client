@@ -1,6 +1,7 @@
 
 import React from 'react';
 import useCollapse from 'react-collapsed';
+import IMG from '../../Assets/PS.bmp';
 function PS({selected, setSelected,  mapExpanded ,setMapExpanded}) {
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse({
         isExpanded: mapExpanded.ps,
@@ -15,6 +16,7 @@ return (
                     ps: currdp,
                     mac: false,
                     peri: false,
+                    perim: false,
                     dp: false,
                     other: false,
                   });
@@ -25,7 +27,11 @@ return (
             {mapExpanded.ps ? 'Posterior Staphyloma (Collapse)' : 'Posterior Staphyloma (Expand)'}
         </div>
         <div {...getCollapseProps()}>
-            <div className="content text-2xl text-red">
+            <div className='flex'>
+            <div className='flex flex-col'>
+        <img src={IMG} alt="peri" border="0" />
+    </div>
+    <div className="w-full content text-2xl text-red">
             <div class="max-w-lg mx-auto">
     
     <fieldset class="mb-5">
@@ -109,6 +115,8 @@ return (
     </fieldset>
 </div>
             </div>
+            </div>
+            
         </div>
     </div>
     );
