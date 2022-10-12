@@ -13,7 +13,7 @@ import img from './Optos/1611516_OD_1.jpg';
 import { useState } from 'react';
 import Nav from './Components/Nav/Nav';
 
-let tot=3;
+let tot=5;
 function App() {
 
   const [mapExpanded, setMapExpanded]=useState({
