@@ -49,7 +49,7 @@ return (
       ease-in-out
       m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example"
-      value={selected.perim.nasal}
+      value={selected.perim?(selected.perim.nasal):"Nasal"}
       onChange={(e) => {
         setSelected({
           ...selected,
