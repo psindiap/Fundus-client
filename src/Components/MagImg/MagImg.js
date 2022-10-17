@@ -342,11 +342,11 @@ function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelec
 <img src={values[imgSelected-1]} id="F-1" alt="Fundus"/>
 </div>
 <div className="flex space-x-2 justify-center gap-8 pd">
-
+Magnification Mode:- 
 <button onClick={() => magnify("F-1", 2)} type="button"
     data-mdb-ripple="true"
     data-mdb-ripple-color="light"
-    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Magnify</button>
+    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Normal</button>
 
 
 <button onClick={() => magnifyjx("F-1", 2)} type="button"
@@ -359,7 +359,7 @@ function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelec
     data-mdb-ripple-color="light"
     class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Peripappilary Tesselation</button>
 </div>
-<div  className="flex space-x-2 justify-center">
+<div  className="flex space-x-2 justify-center gap-8 pd">
 <button 
     type="button"
     data-mdb-ripple="true"
