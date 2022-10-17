@@ -337,7 +337,7 @@ function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelec
 
      return (
 
-<div className="flex">
+<div className="flex flex-col">
 <div className="img-magnifier-container">
 <img src={values[imgSelected-1]} id="F-1" alt="Fundus"/>
 </div>
