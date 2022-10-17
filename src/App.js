@@ -134,14 +134,14 @@ function App() {
     return (
       
       <React.Fragment>
-        {!loggedIn && < Auth loggedIn={loggedIn}/>}
+        {/* {!loggedIn && < Auth loggedIn={loggedIn}/>} */}
         {
-        loggedIn && 
+        // loggedIn && 
         <div>
         <Nav loggedIn={loggedIn} imgSelected={imgSelected} setImgSelected={setImgSelected} setSelected={setSelected}/>
         </div>}
 {
-loggedIn && 
+// loggedIn && 
 
         <div className='flex'>
           <div className='flex flex-col' style={{width:"39%"}}>

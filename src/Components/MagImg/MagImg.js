@@ -1,5 +1,8 @@
 import React from "react";
 import "./MagImg.css";
+import IMG from '../../Assets/Chita.png';
+import IMG2 from '../../Assets/Micro.png';
+
 import axios from 'axios';
 
 
@@ -100,17 +103,31 @@ function delData(user, loggedIn, selected, imgSelected) {
 
 function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelected}) {
 
-  function magnify(imgID, zoom) {
+
+  function magnifyjx(imgID, zoom) {
 
     if(document.querySelector('.img-magnifier-glass')){
       document.querySelector('.img-magnifier-glass').remove();
+    }
+
+    if(document.querySelector('.img-magnifier-glass-sx')){
+      document.querySelector('.img-magnifier-glass-sx').remove();
+    }
+
+    if(document.querySelector('.img-magnifier-glass-jx')){
+      document.querySelector('.img-magnifier-glass-jx').remove();
     }else{
 
       let img, glass, w, h, bw;
     img = document.getElementById(imgID);
     /*create magnifier glass:*/
     glass = document.createElement("DIV");
-    glass.setAttribute("class", "img-magnifier-glass");
+    let imggg = document.createElement("IMG");
+    imggg.src = IMG;
+    glass.appendChild(imggg);
+    glass.setAttribute("class", "img-magnifier-glass-jx");
+    glass.style.width = img.width*0.145 + "px";
+    glass.style.height = img.width*0.145 + "px";
     /*insert magnifier glass:*/
     img.parentElement.insertBefore(glass, img);
     /*set background properties for the magnifier glass:*/
@@ -120,6 +137,160 @@ function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelec
     bw = 3;
     w = glass.offsetWidth / 2;
     h = glass.offsetHeight / 2;
+    
+    /*execute a function when someone moves the magnifier glass over the image:*/
+    glass.addEventListener("mousemove", moveMagnifier);
+    img.addEventListener("mousemove", moveMagnifier);
+    /*and also for touch screens:*/
+    glass.addEventListener("touchmove", moveMagnifier);
+    img.addEventListener("touchmove", moveMagnifier);
+    function moveMagnifier(e) {
+      let pos, x, y;
+      /*prevent any other actions that may occur when moving over the image*/
+      e.preventDefault();
+      /*get the cursor's x and y positions:*/
+      pos = getCursorPos(e);
+      x = pos.x;
+      y = pos.y;
+      /*prevent the magnifier glass from being positioned outside the image:*/
+      if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+      if (x < w / zoom) {x = w / zoom;}
+      if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+      if (y < h / zoom) {y = h / zoom;}
+      /*set the position of the magnifier glass:*/
+      glass.style.left = (x - w) + "px";
+      glass.style.top = (y - h) + "px";
+      /*display what the magnifier glass "sees":*/
+      glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+      // glass=document.deleteElementById("DIV");
+    }
+    function getCursorPos(e) {
+      var a, x = 0, y = 0;
+      e = e || window.event;
+      /*get the x and y positions of the image:*/
+      a = img.getBoundingClientRect();
+      /*calculate the cursor's x and y coordinates, relative to the image:*/
+      x = e.pageX - a.left;
+      y = e.pageY - a.top;
+      /*consider any page scrolling:*/
+      x = x - window.pageXOffset;
+      y = y - window.pageYOffset;
+      return {x : x, y : y};
+    }
+
+    }
+  }
+  function magnifysx(imgID, zoom) {
+
+    if(document.querySelector('.img-magnifier-glass')){
+      document.querySelector('.img-magnifier-glass').remove();
+    }
+
+    if(document.querySelector('.img-magnifier-glass-jx')){
+      document.querySelector('.img-magnifier-glass-jx').remove();
+    }
+
+    if(document.querySelector('.img-magnifier-glass-sx')){
+      document.querySelector('.img-magnifier-glass-sx').remove();
+    }else{
+
+      let img, glass, w, h, bw;
+    img = document.getElementById(imgID);
+    /*create magnifier glass:*/
+    glass = document.createElement("DIV");
+    let imggg = document.createElement("IMG");
+    imggg.src = IMG2;
+    glass.appendChild(imggg);
+    glass.setAttribute("class", "img-magnifier-glass-sx");
+    glass.style.width = img.width*0.145 + "px";
+    glass.style.height = img.width*0.145 + "px";
+    /*insert magnifier glass:*/
+    img.parentElement.insertBefore(glass, img);
+    /*set background properties for the magnifier glass:*/
+    glass.style.backgroundImage = "url('" + img.src + "')";
+    glass.style.backgroundRepeat = "no-repeat";
+    glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+    bw = 3;
+    w = glass.offsetWidth / 2;
+    h = glass.offsetHeight / 2;
+    
+    /*execute a function when someone moves the magnifier glass over the image:*/
+    glass.addEventListener("mousemove", moveMagnifier);
+    img.addEventListener("mousemove", moveMagnifier);
+    /*and also for touch screens:*/
+    glass.addEventListener("touchmove", moveMagnifier);
+    img.addEventListener("touchmove", moveMagnifier);
+    function moveMagnifier(e) {
+      let pos, x, y;
+      /*prevent any other actions that may occur when moving over the image*/
+      e.preventDefault();
+      /*get the cursor's x and y positions:*/
+      pos = getCursorPos(e);
+      x = pos.x;
+      y = pos.y;
+      /*prevent the magnifier glass from being positioned outside the image:*/
+      if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+      if (x < w / zoom) {x = w / zoom;}
+      if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+      if (y < h / zoom) {y = h / zoom;}
+      /*set the position of the magnifier glass:*/
+      glass.style.left = (x - w) + "px";
+      glass.style.top = (y - h) + "px";
+      /*display what the magnifier glass "sees":*/
+      glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+      // glass=document.deleteElementById("DIV");
+    }
+    function getCursorPos(e) {
+      var a, x = 0, y = 0;
+      e = e || window.event;
+      /*get the x and y positions of the image:*/
+      a = img.getBoundingClientRect();
+      /*calculate the cursor's x and y coordinates, relative to the image:*/
+      x = e.pageX - a.left;
+      y = e.pageY - a.top;
+      /*consider any page scrolling:*/
+      x = x - window.pageXOffset;
+      y = y - window.pageYOffset;
+      return {x : x, y : y};
+    }
+
+    }
+  }
+
+  function magnify(imgID, zoom) {
+
+    if(document.querySelector('.img-magnifier-glass-sx')){
+      document.querySelector('.img-magnifier-glass-sx').remove();
+    }
+
+    if(document.querySelector('.img-magnifier-glass-jx')){
+      document.querySelector('.img-magnifier-glass-jx').remove();
+    }
+
+    if(document.querySelector('.img-magnifier-glass')){
+      document.querySelector('.img-magnifier-glass').remove();
+    }else{
+
+      let img, glass, w, h, bw;
+    img = document.getElementById(imgID);
+    /*create magnifier glass:*/
+    glass = document.createElement("DIV");
+    let imggg = document.createElement("IMG");
+    imggg.src = IMG;
+    // glass.appendChild(imggg);
+    glass.setAttribute("class", "img-magnifier-glass");
+    glass.style.width = img.width*0.145 + "px";
+    glass.style.height = img.width*0.145 + "px";
+    /*insert magnifier glass:*/
+    img.parentElement.insertBefore(glass, img);
+    /*set background properties for the magnifier glass:*/
+    glass.style.backgroundImage = "url('" + img.src + "')";
+    glass.style.backgroundRepeat = "no-repeat";
+    glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+    bw = 3;
+    w = glass.offsetWidth / 2;
+    h = glass.offsetHeight / 2;
+    
     /*execute a function when someone moves the magnifier glass over the image:*/
     glass.addEventListener("mousemove", moveMagnifier);
     img.addEventListener("mousemove", moveMagnifier);
@@ -170,11 +341,24 @@ function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelec
 <div className="img-magnifier-container">
 <img src={values[imgSelected-1]} id="F-1" alt="Fundus"/>
 </div>
-<div className="flex space-x-2 justify-center gap-16 pd">
-<button onClick={() => magnify("F-1", 3.5)} type="button"
+{/* <div className="flex space-x-4 justify-center gap-8 pd"></div> */}
+<div className="flex space-x-2 justify-center gap-8 pd">
+
+<button onClick={() => magnify("F-1", 2)} type="button"
     data-mdb-ripple="true"
     data-mdb-ripple-color="light"
     class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Magnify</button>
+
+
+<button onClick={() => magnifyjx("F-1", 2)} type="button"
+    data-mdb-ripple="true"
+    data-mdb-ripple-color="light"
+    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Macular Tesselation</button>
+
+<button onClick={() => magnifysx("F-1", 2)} type="button"
+    data-mdb-ripple="true"
+    data-mdb-ripple-color="light"
+    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Peripappilary Tesselation</button>
 
 <button 
     type="button"
