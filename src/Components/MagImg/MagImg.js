@@ -342,20 +342,21 @@ function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelec
 <img src={values[imgSelected-1]} id="F-1" alt="Fundus"/>
 </div>
 <div className="flex space-x-2 justify-center gap-8 pd">
-<div>Magnification Mode:- </div>
-<div><button onClick={() => magnify("F-1", 2)} type="button"
+<div className="flex">Magnification Mode:- </div>
+<div className="flex">
+  <button onClick={() => magnify("F-1", 2)} type="button"
     data-mdb-ripple="true"
     data-mdb-ripple-color="light"
     class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Normal</button>
     </div>
 
-    <div>
+    <div className="flex">
 <button onClick={() => magnifyjx("F-1", 2)} type="button"
     data-mdb-ripple="true"
     data-mdb-ripple-color="light"
     class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Macular Tesselation</button>
 </div>
-<div>
+<div className="flex">
 <button onClick={() => magnifysx("F-1", 2)} type="button"
     data-mdb-ripple="true"
     data-mdb-ripple-color="light"
