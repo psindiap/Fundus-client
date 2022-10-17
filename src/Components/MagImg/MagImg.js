@@ -341,7 +341,7 @@ function MagImg({user, loggedIn, selected, setSelected, imgSelected, setImgSelec
 <div className="img-magnifier-container">
 <img src={values[imgSelected-1]} id="F-1" alt="Fundus"/>
 </div>
-<div className="flex flex-col space-x-2 justify-center gap-8 pd">
+<div className="flex space-x-2 justify-center gap-8 pd">
 <div>Magnification Mode:- </div>
 <div><button onClick={() => magnify("F-1", 2)} type="button"
     data-mdb-ripple="true"
