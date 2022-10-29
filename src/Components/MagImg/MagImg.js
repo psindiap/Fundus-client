@@ -19,7 +19,7 @@ function importAll(r) {
 const images = importAll(require.context('../../Optos', false, /\.(png|jpe?g|svg)$/));
 const values = Object.values(images)
 values.sort();
-const tot=5;
+const tot=98;
 
 
 function sendData(user, loggedIn, selected, setSelected, imgSelected ,setImgSelected) {

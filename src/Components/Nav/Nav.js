@@ -4,7 +4,7 @@ import {useState} from 'react';
 
 
 function DP({loggedIn, imgSelected, setImgSelected, setSelected}) {
-    let tot=5;
+    let tot=98;
 return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <div class="container-fluid">
