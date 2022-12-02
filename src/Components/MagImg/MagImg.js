@@ -33,7 +33,7 @@ function sendData(user, loggedIn, selected, setSelected, imgSelected ,setImgSele
 
   var config = {
     method: 'post',
-    url: `https://image-fundus.herokuapp.com/db/update/${imgSelected}`,
+    url: `https://fundus-image.azurewebsites.net/db/update/${imgSelected}`,
     headers: { 
       'token': `Bearer ${user.jwt}`, 
       'Content-Type': 'application/json'
